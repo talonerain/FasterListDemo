@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, FlatList, StyleSheet, RefreshControl, ActivityIndicator } from 'react-native';
+import { Text, View, SectionList, StyleSheet, RefreshControl, ActivityIndicator } from 'react-native';
 
 const CITY_NAMES = ['北京', '上海', '广州', '深圳', '杭州', '成都', '南京', '沈阳', '哈尔滨', "大连"
     , '石家庄', '长沙', '台北', '厦门']
@@ -51,8 +51,8 @@ export default class SectionListDemo extends Component {
     render() {
         return (
             <View style={{ flex: 1, justifyContent: 'center', alignItems: "stretch" }}>
-                <FlatList
-                    data={this.state.dataArray}
+                <SectionList
+                    sections={CITY_NAMES}
                     renderItem={(data) => this._renderItem(data)}
                     /* refreshing={this.state.isLoading}
                     onRefresh={() => {

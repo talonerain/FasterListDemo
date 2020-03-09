@@ -9,6 +9,9 @@ export default class App extends Component {
         <Button title={"FlatListDemo"} onPress={() => {
           navigation.navigate("FlatListDemo")
         }} />
+        <Button title={"SectionListDemo"} onPress={() => {
+          navigation.navigate("SectionListDemo")
+        }} />
       </View>
     );
   }
