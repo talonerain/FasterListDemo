@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Text, View, SectionList, StyleSheet, RefreshControl, ActivityIndicator } from 'react-native';
 
-const CITY_NAMES = ['北京', '上海', '广州', '深圳', '杭州', '成都', '南京', '沈阳', '哈尔滨', "大连"
-    , '石家庄', '长沙', '台北', '厦门']
+const CITY_NAMES = [{ data: ['北京', '上海', '广州', '深圳'], title: '一线' },
+{ data: ['杭州', '成都', '南京', '沈阳', '哈尔滨'], title: '二线' },
+{ data: ["大连", '石家庄', '长沙', '台北', '厦门'], title: '三线' }]
 
 export default class SectionListDemo extends Component {
     constructor(props) {
@@ -33,6 +34,11 @@ export default class SectionListDemo extends Component {
                 dataArray: dataArray
             })
         }, 2000);
+    }
+    _renderSectionHeader({ section }) {
+        return <View>
+            <Text>{section.title}</Text>
+        </View>
     }
     _renderItem(data) {
         return <View style={style.item}>
@@ -71,6 +77,7 @@ export default class SectionListDemo extends Component {
                     }
                     ListFooterComponent={() => this.genIndicator()}
                     onEndReached={() => this.loadData()}
+                    renderSectionHeader={(cnm) => this._renderSectionHeader(cnm)}
                 />
             </View>
         );
