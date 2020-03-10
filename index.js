@@ -10,7 +10,7 @@ const AppRoot = createStackNavigator({
   App: {
     screen: App,
     navigationOptions: {
-      title: 'haha?'
+      title: '跨平台app'
     }
   },
   FlatListDemo: {

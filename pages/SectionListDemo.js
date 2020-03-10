@@ -36,8 +36,8 @@ export default class SectionListDemo extends Component {
         }, 2000);
     }
     _renderSectionHeader({ section }) {
-        return <View>
-            <Text>{section.title}</Text>
+        return <View style={style.sectionHeader}>
+            <Text style={style.sectionText}>{section.title}</Text>
         </View>
     }
     _renderItem(data) {
@@ -58,7 +58,7 @@ export default class SectionListDemo extends Component {
         return (
             <View style={{ flex: 1, justifyContent: 'center', alignItems: "stretch" }}>
                 <SectionList
-                    sections={CITY_NAMES}
+                    sections={this.state.dataArray}
                     renderItem={(data) => this._renderItem(data)}
                     /* refreshing={this.state.isLoading}
                     onRefresh={() => {
@@ -78,6 +78,7 @@ export default class SectionListDemo extends Component {
                     ListFooterComponent={() => this.genIndicator()}
                     onEndReached={() => this.loadData()}
                     renderSectionHeader={(cnm) => this._renderSectionHeader(cnm)}
+                    ItemSeparatorComponent={() => <View style={style.spearator} />}
                 />
             </View>
         );
@@ -86,16 +87,27 @@ export default class SectionListDemo extends Component {
 
 const style = StyleSheet.create({
     item: {
-        backgroundColor: '#169',
-        height: 200,
-        marginRight: 15,
-        marginLeft: 15,
-        marginBottom: 15,
+        height: 80,
         alignItems: "center",
         justifyContent: "center"
     },
     text: {
-        color: 'white',
+        color: 'black',
         fontSize: 20
+    },
+    sectionHeader: {
+        height: 50,
+        backgroundColor: "#93ebbe",
+        justifyContent: "center",
+        alignItems: "center"
+    },
+    spearator: {
+        height: 1,
+        backgroundColor: 'gray',
+        flex: 1
+    },
+    sectionText: {
+        color: 'red',
+        fontSize: 16
     }
 })
